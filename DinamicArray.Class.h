@@ -10,7 +10,7 @@ using namespace std;
 
 template <typename T>
 class DynamicArray {
-private: // Поля класса 
+private: // Поля класса  
 	T* array;         // Указатель на элементтв массиве
 	size_t capacity; // Емкость массива
 	size_t length;  // Текущий размер массива
@@ -20,7 +20,7 @@ private: // Поля класса
 	void re_memory() {
 		this->capacity = length * 2; //Увеличение емкости массива 
 		T* arr = new T[capacity]();	   //Создание подмассива и выделение под него нового места	
-		copy(array, array + length, arr);
+		copy(array, array + length, arr); //Копируем элементы из старого массива в новый массив arr + длина массива для копирования всех элементов
 		delete[] this->array;						  //Очищение памяти старого массива array
 		this->array = arr;							  //Присваивание старой памяти array нового указателя на массиве arr
 	}
@@ -50,7 +50,7 @@ public:
 		this->length = len;
 		this->capacity = len;
 		this->array = new T[capacity];
-
+		//Копируем элементы из вектора arr в массив array, начиная с первого элемента и копируя len элементов
 		copy(arr.begin(), arr.begin() + len, array);
 	}
 
